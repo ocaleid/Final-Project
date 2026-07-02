@@ -24,8 +24,9 @@ def add_patient():
         "phone": phone,
         "symptoms": symptoms
     }
+    
     patients.append(patient)
-    print("Patient added successfully.")
+    print(f"Patient added successfully, ID is {patient['id']}")
     print("***********************************************")
 
 def view_patients():
@@ -127,7 +128,7 @@ def view_patient_history():
     print("***********************************************")
 
 def save_data():
-    with open ("patients.csv", "w") as file:
+    with open ("patients.json", "w") as file:
         file.write("ID,Name,Age,Phone,Symptoms,Visit_Notes\n")
         for patient in patients:
             file.write(f"{patient['id']},{patient['name']},{patient['age']},{patient['phone']},{patient['symptoms']},{patient.get('visits', [])}\n")
@@ -161,4 +162,5 @@ patients = []
 import random
 numbers = list(range(1000, 10000))
 random.shuffle(numbers)
+id_x=None
 main()
